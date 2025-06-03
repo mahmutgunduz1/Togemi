@@ -7,11 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mahmutgunduz.togemi.data.entity.NoteData
 import com.mahmutgunduz.togemi.databinding.RecyclerRowBinding
 import com.mahmutgunduz.togemi.ui.viewmodel.MainViewModel
+import com.mahmutgunduz.togemi.utils.alertDialogTrueFalse
 
 class NoteAdapter(
     val noteList: List<NoteData>,
-    val viewModel: MainViewModel
-
+    val viewModel: MainViewModel,
+    val context: Context
 ) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
     class NoteViewHolder(val binding: RecyclerRowBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -33,8 +34,24 @@ class NoteAdapter(
         val note = noteList[position]
         holder.binding.titleTextView.text = note.title
         holder.binding.noteTextView.text = note.noteText
+
+
+        holder.binding.root.setOnClickListener {
+            viewModel.intentToDetail(note, it)
+        }
         holder.binding.moreImage.setOnClickListener {
-            viewModel.deleteNote(note)
+                    context.alertDialogTrueFalse(
+                        title = "Notu Sil",
+                        message = "Notu silmek istediğinize emin misiniz?",
+                        positiveButtonText = "Evet",
+                        negativeButtonText = "Hayır",
+                        onPositiveClick = {
+                            viewModel.deleteNote(note)
+                        },
+                        mainViewModel = viewModel
+
+                    )
+
         }
 
 

@@ -1,14 +1,441 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.DetailFragment">
+    android:background="@color/darkBlue">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- App Bar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            app:contentInsetStart="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/btnBack"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_arrow_back"
+                    android:contentDescription="Geri"
+                    app:tint="@color/white" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:id="@+id/ivPinned"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_pin"
+                    android:contentDescription="Sabitle"
+                    app:tint="@color/white" />
+
+                <ImageView
+                    android:id="@+id/btnReminder"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="16dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_alarm"
+                    android:contentDescription="Hatırlatıcı Ekle"
+                    app:tint="@color/white" />
+
+                <ImageView
+                    android:id="@+id/btnMore"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="16dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_more_vert"
+                    android:contentDescription="Daha Fazla"
+                    app:tint="@color/white" />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- İçerik -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/detailScroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:padding="24dp"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Not Başlığı -->
+            <TextView
+                android:id="@+id/textTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Not Başlığı"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Etiketler ve Kategori -->
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleLine="false"
+                app:chipSpacingHorizontal="8dp"
+                android:layout_marginBottom="16dp">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipCategoryColor"
+                    style="@style/Widget.MaterialComponents.Chip.Action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kişisel"
+                    app:chipBackgroundColor="@color/orange"
+                    app:chipStrokeColor="@color/white"
+                    app:chipStrokeWidth="1dp"
+                    android:textColor="@color/white"
+                    app:chipIcon="@drawable/ic_label"
+                    app:chipIconTint="@color/white"
+                    app:closeIconVisible="false" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipTag1"
+                    style="@style/Widget.MaterialComponents.Chip.Action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Önemli"
+                    app:chipBackgroundColor="@color/blue"
+                    app:chipStrokeColor="@color/white"
+                    app:chipStrokeWidth="1dp"
+                    android:textColor="@color/white"
+                    app:closeIconVisible="false" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <!-- Tarih ve Bilgiler -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="20dp">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_calendar"
+                    app:tint="@color/white"
+                    android:alpha="0.7" />
+
+                <TextView
+                    android:id="@+id/textDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="22 Temmuz 2025, 15:30"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:alpha="0.7"
+                    android:layout_marginStart="8dp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="16dp"
+                    android:background="@color/white"
+                    android:alpha="0.3"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp" />
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_edit"
+                    app:tint="@color/white"
+                    android:alpha="0.7" />
+
+                <TextView
+                    android:id="@+id/textLastEdited"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Son düzenleme: 2 saat önce"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:alpha="0.7"
+                    android:layout_marginStart="8dp" />
+            </LinearLayout>
+
+            <!-- Not İçeriği -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardBackgroundColor="@color/input_background"
+                app:cardElevation="4dp"
+                android:layout_marginBottom="24dp">
+
+                <TextView
+                    android:id="@+id/textContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Buraya not içeriği gelecek..."
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:lineSpacingExtra="8dp"
+                    android:minHeight="150dp"
+                    android:padding="20dp" />
+            </androidx.cardview.widget.CardView>
+
+            <!-- Ekler Bölümü - Yeniden Tasarlanmış -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardAttachments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardBackgroundColor="@color/input_background"
+                app:cardElevation="4dp"
+                android:layout_marginBottom="24dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Başlık ve Ekle Butonu -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="12dp">
+
+                        <TextView
+                            android:id="@+id/tvAttachmentsTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Ekler"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnAddAttachment"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="Ekle"
+                            android:textColor="@color/white"
+                            app:icon="@drawable/ic_add"
+                            app:iconTint="@color/white"
+                            app:strokeColor="@color/white"
+                            android:paddingHorizontal="12dp"
+                            android:minWidth="0dp"
+                            app:iconSize="18dp"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <!-- Ekler RecyclerView -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerAttachments"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:orientation="horizontal"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/item_attachment"
+                        tools:itemCount="3" />
+
+                    <!-- Boş Durum Mesajı -->
+                    <TextView
+                        android:id="@+id/tvEmptyAttachments"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Henüz ek yok. Dosya, resim veya ses eklemek için 'Ekle' butonuna tıklayın."
+                        android:textColor="@color/white"
+                        android:alpha="0.7"
+                        android:gravity="center"
+                        android:padding="24dp"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Modlar - Yeniden Tasarlanmış -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardBackgroundColor="@color/input_background"
+                app:cardElevation="4dp"
+                android:layout_marginBottom="80dp">
+
+                <LinearLayout
+                    android:id="@+id/layoutModes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Başlık -->
+                    <TextView
+                        android:id="@+id/tvModesTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Görüntüleme Seçenekleri"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="16dp" />
+
+                    <!-- Mod Butonları -->
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chipGroupModes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:singleSelection="false"
+                        app:chipSpacingHorizontal="8dp"
+                        app:chipSpacingVertical="8dp">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipReadMode"
+                            style="@style/Widget.MaterialComponents.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Okuma Modu"
+                            android:textColor="@color/white"
+                            app:chipBackgroundColor="@color/blue"
+                            app:chipIcon="@drawable/ic_book"
+                            app:chipIconTint="@color/white"
+                            app:chipStrokeColor="@color/white"
+                            app:chipStrokeWidth="1dp" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipNightMode"
+                            style="@style/Widget.MaterialComponents.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Gece Modu"
+                            android:textColor="@color/white"
+                            app:chipBackgroundColor="@color/darkBlue"
+                            app:chipIcon="@drawable/ic_night"
+                            app:chipIconTint="@color/white"
+                            app:chipStrokeColor="@color/white"
+                            app:chipStrokeWidth="1dp" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipFavorite"
+                            style="@style/Widget.MaterialComponents.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Favori"
+                            android:textColor="@color/white"
+                            app:chipBackgroundColor="@color/orange"
+                            app:chipIcon="@drawable/ic_favorite"
+                            app:chipIconTint="@color/white"
+                            app:chipStrokeColor="@color/white"
+                            app:chipStrokeWidth="1dp" />
+
+                    </com.google.android.material.chip.ChipGroup>
+
+                    <!-- Bilgi Metni -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Okuma deneyiminizi özelleştirmek için mod seçebilirsiniz. Gece modu gözlerinizi yormaması için ekran parlaklığını ve renkleri ayarlar."
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:alpha="0.7"
+                        android:layout_marginTop="12dp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Alt Butonlar -->
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:backgroundTint="@color/darkBlue"
+        app:elevation="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnShare"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Paylaş"
+                android:textColor="@color/white"
+                app:icon="@drawable/ic_share"
+                app:iconTint="@color/white" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEdit"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Düzenle"
+                android:textColor="@color/white"
+                app:icon="@drawable/pencil"
+                app:iconTint="@color/white" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDelete"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sil"
+                android:textColor="#FF5252"
+                app:icon="@drawable/planning"
+                app:iconTint="#FF5252" />
+        </LinearLayout>
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

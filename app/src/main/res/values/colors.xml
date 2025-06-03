@@ -3,15 +3,15 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="darkBlue">#213555</color>
-    <color name="blue">#3E5879</color>
-    <color name="darkCream">#D8C4B6</color>
-    <color name="cream">#F5EFE7</color>
+    <color name="darkBlue">#1E2A38</color>
+    <color name="blue">#3F51B5</color>
+    <color name="orange">#FF9800</color>
+    <color name="darkCream">#FFF8E1</color>
 
 
     <color name="renk1">#dabbfa</color>
     <color name="ana">#261f47</color>
-    <color name="renk2">#d7f8f2</color>
+    <color name="renk2">#FF5722</color>
 
 
     <color name="dialog_background">#1E2A38</color>

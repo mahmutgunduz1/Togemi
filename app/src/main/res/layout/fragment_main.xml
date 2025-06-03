@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/darkBlue"
+    android:background="@color/darkBlue"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.MainFragment">
 
@@ -50,7 +52,7 @@
         android:paddingTop="12dp"
         android:paddingEnd="24dp"
         android:text="Notlarım"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -96,7 +98,7 @@
         android:contentDescription="Yeni görev ekle"
         android:elevation="8dp"
         android:src="@drawable/add_white"
-        app:backgroundTint="@color/darkBlue"
+        app:backgroundTint="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
