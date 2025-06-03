@@ -1,0 +1,232 @@
+<!-- res/layout/filepicker_bottom_sheet.xml -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottomSheetLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottom_nav_shadow"
+    android:paddingBottom="32dp">
+
+    <!-- Handle for dragging -->
+    <View
+        android:id="@+id/dragHandle"
+        android:layout_width="32dp"
+        android:layout_height="4dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/divider_color"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvChooseFileType"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/aldrich"
+        android:gravity="center"
+        android:paddingVertical="16dp"
+        android:text="@string/choose_file_type"
+        android:textColor="@color/text_color_primary"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dragHandle" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/divider_color"
+        app:layout_constraintTop_toBottomOf="@id/tvChooseFileType"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Grid layout for file type options -->
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/optionsGrid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:columnCount="2"
+        app:useDefaultMargins="true">
+
+        <!-- Image Option -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardImage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+
+            android:backgroundTint="@color/dialog_background"
+            app:cardElevation="2dp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:clickable="true"
+            android:focusable="true"
+            app:rippleColor="@color/ripple_material_light">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/ivImage"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_image"
+                    app:tint="@color/image_tint"
+                    android:padding="8dp"
+                    android:background="@drawable/bg_option_item"
+                    android:contentDescription="@string/image_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/aldrich"
+                    android:text="@string/select_image"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Video Option -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardVideo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            android:backgroundTint="@color/dialog_background"
+            app:cardElevation="2dp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:clickable="true"
+            android:focusable="true"
+            app:rippleColor="@color/ripple_material_light">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/ivVideo"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_video"
+                    app:tint="@color/video_tint"
+                    android:padding="8dp"
+                    android:background="@drawable/bg_option_item"
+                    android:contentDescription="@string/video_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/aldrich"
+
+                    android:text="@string/select_video"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Audio Option -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardAudio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:backgroundTint="@color/dialog_background"
+            android:clickable="true"
+            android:focusable="true"
+            app:rippleColor="@color/ripple_material_light">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/ivAudio"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_audio"
+                    app:tint="@color/audio_tint"
+                    android:padding="8dp"
+                    android:background="@drawable/bg_option_item"
+                    android:contentDescription="@string/audio_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/aldrich"
+                    android:text="@string/select_audio"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Document Option -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardDocument"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:backgroundTint="@color/dialog_background"
+            android:clickable="true"
+            android:focusable="true"
+            app:rippleColor="@color/ripple_material_light">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/ivDocument"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_document"
+                    app:tint="@color/document_tint"
+                    android:padding="8dp"
+                    android:background="@drawable/bg_option_item"
+                    android:contentDescription="@string/document_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/aldrich"
+                    android:text="@string/select_document"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.gridlayout.widget.GridLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

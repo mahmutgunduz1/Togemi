@@ -7,5 +7,5 @@
     <item
         android:id="@+id/toDoFragment"
         android:icon="@drawable/planning"
-        android:title="yapilacaklar" />
+        android:title="Yapılacaklar" />
 </menu>

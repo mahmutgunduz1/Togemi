@@ -2,4 +2,15 @@
     <string name="app_name">Togemi</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    
+    <!-- File picker strings -->
+    <string name="choose_file_type">Bir dosya türü seçin</string>
+    <string name="select_image">Resim Seç</string>
+    <string name="select_video">Video Seç</string>
+    <string name="select_audio">Ses Seç</string>
+    <string name="select_document">Dosya Seç</string>
+    <string name="image_icon">Resim ikonu</string>
+    <string name="video_icon">Video ikonu</string>
+    <string name="audio_icon">Ses ikonu</string>
+    <string name="document_icon">Dosya ikonu</string>
 </resources>
