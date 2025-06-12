@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkBlue"
+    tools:context=".ui.fragment.FavoriteNotesFragment">
+
+    <!-- Header Section -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/aldrich"
+        android:gravity="center"
+        android:paddingStart="24dp"
+        android:paddingTop="24dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="16dp"
+        android:text="Favorilerim"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Search Section -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/searchCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/searchInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Favori ara"
+            app:boxBackgroundColor="@color/white"
+            app:boxBackgroundMode="filled"
+            app:boxStrokeWidth="0dp"
+            android:textColorHint="@color/black"
+            app:hintTextColor="@color/black"
+            app:endIconMode="clear_text"
+            app:startIconDrawable="@drawable/baseline_search_24"
+            app:startIconTint="@color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etSearch"
+        android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Filter Chips Section -->
+    <HorizontalScrollView
+        android:id="@+id/chipScrollView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:clipToPadding="false"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchCard">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:chipSpacing="8dp"
+            app:singleLine="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipAll"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tümü"
+                app:chipBackgroundColor="@color/accent_green"
+                app:chipCornerRadius="16dp"
+                app:chipStrokeColor="@color/white"
+                app:chipStrokeWidth="1dp"
+                android:textColor="@color/chip_text_selector" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipPersonal"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kişisel"
+                app:chipBackgroundColor="@color/accent_green"
+                app:chipCornerRadius="16dp"
+                app:chipStrokeColor="@color/white"
+                app:chipStrokeWidth="1dp"
+                android:textColor="@color/chip_text_selector" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipWork"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="İş"
+                app:chipBackgroundColor="@color/accent_green"
+                app:chipCornerRadius="16dp"
+                app:chipStrokeColor="@color/white"
+                app:chipStrokeWidth="1dp"
+                android:textColor="@color/chip_text_selector" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipSecure"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Şifreli"
+                app:chipBackgroundColor="@color/accent_green"
+                app:chipCornerRadius="16dp"
+                app:chipStrokeColor="@color/white"
+                app:chipStrokeWidth="1dp"
+                android:textColor="@color/chip_text_selector" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipImportant"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Önemli"
+                app:chipBackgroundColor="@color/accent_green"
+                app:chipCornerRadius="16dp"
+                app:chipStrokeColor="@color/white"
+                app:chipStrokeWidth="1dp"
+                android:textColor="@color/chip_text_selector" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipOther"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Diğer"
+                app:chipBackgroundColor="@color/accent_green"
+                app:chipCornerRadius="16dp"
+                app:chipStrokeColor="@color/white"
+                app:chipStrokeWidth="1dp"
+                android:textColor="@color/chip_text_selector" />
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
+    <!-- RecyclerView Section -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTasks"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:clipToPadding="false"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chipScrollView" />
+
+    <!-- Empty State -->
+    <LinearLayout
+        android:id="@+id/emptyStateContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/ic_favorite"
+            app:tint="@color/white"
+            android:alpha="0.7"/>
+
+        <TextView
+            android:id="@+id/tvEmptyState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Henüz favori not eklenmemiş"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            android:alpha="0.7"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

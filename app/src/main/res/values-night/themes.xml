@@ -3,6 +3,6 @@
     <style name="Base.Theme.Togemi" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
-        <item name="android:statusBarColor">#2780C8</item>
+        <item name="android:statusBarColor">@color/darkBlue</item>
     </style>
 </resources>

@@ -4,6 +4,7 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -29,16 +30,16 @@ android {
             )
         }
     }
-    
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    
+
     kotlinOptions {
         jvmTarget = "17"
     }
-    
+
     buildFeatures {
         viewBinding = true
     }
@@ -52,31 +53,44 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-    
+
     // GridLayout
     implementation("androidx.gridlayout:gridlayout:1.0.0")
-    
+
     // Room
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
+    implementation(libs.androidx.runner)
+    implementation(libs.firebase.messaging)
     kapt("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-rxjava3:2.6.1")
-    
+
     // RxJava
     implementation("io.reactivex.rxjava3:rxjava:3.1.5")
     implementation("io.reactivex.rxjava3:rxandroid:3.0.2")
-    
+
     // Hilt
     implementation("com.google.dagger:hilt-android:2.50")
     kapt("com.google.dagger:hilt-android-compiler:2.50")
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
-    
+
     // Lifecycle
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
-    
+
     // Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    //Glide
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
+    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+
+
+    implementation("com.airbnb.android:lottie:3.4.0")
+
+
 }

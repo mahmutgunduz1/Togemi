@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Bottom Navigation Custom Style -->
+    <style name="CustomBottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="itemIconTint">@color/bottom_nav_item_color</item>
+        <item name="itemTextColor">@color/bottom_nav_item_color</item>
+        <item name="itemRippleColor">@color/accent_green</item>
+        <item name="itemTextAppearanceActive">@style/TextAppearance.BottomNavigationView.Active</item>
+        <item name="itemTextAppearanceInactive">@style/TextAppearance.BottomNavigationView.Inactive</item>
+        <item name="itemHorizontalTranslationEnabled">true</item>
+    </style>
+
+    <style name="TextAppearance.BottomNavigationView.Active" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.03</item>
+    </style>
+
+    <style name="TextAppearance.BottomNavigationView.Inactive" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">11sp</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:alpha">0.7</item>
+    </style>
+    
+    <!-- Card Style for Bottom Navigation Container -->
+    <style name="BottomNavCardStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">24dp</item>
+        <item name="cardElevation">8dp</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="cardBackgroundColor">@android:color/transparent</item>
+    </style>
+</resources> 

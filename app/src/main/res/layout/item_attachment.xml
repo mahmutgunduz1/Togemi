@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="140dp"
+    android:layout_height="160dp"
+    android:layout_margin="6dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="3dp"
+    android:foreground="?attr/selectableItemBackground">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Ek Görseli -->
+        <ImageView
+            android:id="@+id/ivAttachment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tvAttachmentName"
+            tools:src="@drawable/ic_launcher_background" />
+
+
+        <TextView
+            android:id="@+id/tvAttachmentName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:background="@color/input_background"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Dosya.jpg" />
+
+        <!-- Dosya Boyutu -->
+        <TextView
+            android:id="@+id/tvFileSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/input_background"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            android:alpha="0.9"
+            app:layout_constraintBottom_toTopOf="@id/tvAttachmentName"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="8dp"
+            tools:text="2.4 MB"
+            tools:ignore="SmallSp" />
+
+        <!-- Seçenekler Butonu -->
+        <ImageView
+            android:id="@+id/ivOptions"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:padding="4dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/tvAttachmentName"
+            app:layout_constraintTop_toTopOf="@id/tvAttachmentName"
+            android:src="@drawable/baseline_auto_delete_24"
+            app:tint="@color/white" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView> 

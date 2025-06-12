@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="0dp"
+    app:cardBackgroundColor="@color/input_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <!-- Tamamlandı Checkbox -->
+        <CheckBox
+            android:id="@+id/checkboxComplete"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="12dp"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:buttonTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Görev İçeriği -->
+        <LinearLayout
+            android:id="@+id/layoutTaskContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivPriority"
+            app:layout_constraintStart_toEndOf="@+id/checkboxComplete"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- Görev Başlığı -->
+            <TextView
+                android:id="@+id/tvTaskTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="Proje toplantısı için sunum hazırla" />
+
+            <!-- Alt Bilgiler -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
+
+                <!-- Tarih -->
+                <TextView
+                    android:id="@+id/tvTaskDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="4dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:alpha="0.7"
+                    app:drawableStartCompat="@drawable/ic_calendar"
+                    app:drawableTint="@color/white"
+                    tools:text="Bugün, 15:30" />
+
+                <!-- Kategori -->
+                <TextView
+                    android:id="@+id/tvTaskCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/bg_category_pill"
+                    android:paddingStart="8dp"
+                    android:paddingTop="2dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="2dp"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp"
+                    tools:text="İş" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Öncelik İkonu -->
+        <ImageView
+            android:id="@+id/ivPriority"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_favorite"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="#E91E63"
+            tools:visibility="visible" />
+
+        <!-- Daha Fazla Seçenek -->
+        <ImageView
+            android:id="@+id/ivTaskOptions"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="4dp"
+            android:src="@drawable/ic_more_vert"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/white" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView> 

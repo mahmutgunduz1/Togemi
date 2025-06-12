@@ -13,7 +13,17 @@ class NoteData(
     var title: String,
 
     @ColumnInfo(name = "noteText")
-    var noteText: String
+    var noteText: String,
+    @ColumnInfo(name = "date")
+    var date: Long= System.currentTimeMillis(),
+    @ColumnInfo(name = "password")
+    var password: String? = null,
+    @ColumnInfo(name = "isLocked")
+    var isLocked: Boolean = false,
+    @ColumnInfo(name = "isFavorite")
+    var isFavorite: Boolean = false
+
+
 ) : Serializable {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0

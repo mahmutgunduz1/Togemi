@@ -28,4 +28,7 @@
     <color name="video_tint">#F44336</color>
     <color name="audio_tint">#2196F3</color>
     <color name="document_tint">#FF9800</color>
+    <color name="gray">#757575</color>
+    <color name="gray_light">#BDBDBD</color>
+    <color name="red">#F44336</color>
 </resources>

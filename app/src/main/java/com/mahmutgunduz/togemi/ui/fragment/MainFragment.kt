@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.room.Room
+import com.mahmutgunduz.togemi.R
 import com.mahmutgunduz.togemi.data.entity.NoteData
 import com.mahmutgunduz.togemi.database.NoteDataBase
 import com.mahmutgunduz.togemi.databinding.FragmentMainBinding
@@ -18,7 +20,7 @@ import com.mahmutgunduz.togemi.ui.viewmodel.DetailViewModel
 import com.mahmutgunduz.togemi.ui.viewmodel.DetailViewModelFactory
 import com.mahmutgunduz.togemi.ui.viewmodel.MainViewModel
 import com.mahmutgunduz.togemi.ui.viewmodel.MainViewModelFactory
-import com.mahmutgunduz.togemi.utils.alertDialog
+import com.mahmutgunduz.togemi.service.alertDialog
 
 
 class MainFragment : Fragment() {
@@ -43,7 +45,7 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -55,35 +57,33 @@ class MainFragment : Fragment() {
             requireContext(),
             NoteDataBase::class.java,
             "note_database"
-        ).build()
+        ).fallbackToDestructiveMigration()
+            .build()
 
         noteDao = noteDataBase.noteDao()
 
         // ViewModelFactory kullanarak ViewModel oluştur
         val mainFactory = MainViewModelFactory(noteDao)
         viewModelMain = ViewModelProvider(this, mainFactory)[MainViewModel::class.java]
-        
+
         // DetailViewModel'i başlat
-        val detailFactory = DetailViewModelFactory(noteDao)
+        val detailFactory = DetailViewModelFactory(noteDao, noteDataBase.fileDao())
         viewModelDetail = ViewModelProvider(this, detailFactory)[DetailViewModel::class.java]
-        
-        // Test verilerini ViewModel üzerinden ekle
-
-        val prefs = requireContext().getSharedPreferences("app_prefs", 0)
-        val isFirstRun = prefs.getBoolean("first_run", true)
-
-        if (isFirstRun) {
-            // Sadece ilk çalıştırmada eklenir
-            viewModelMain.addNote(NoteData("test1", "Horton kimi duyuyor..."))
-            prefs.edit().putBoolean("first_run", false).apply()
-        }
-
-        viewModelMain
 
 
 
 
 
+        fabButtonClick()
+        observeViewModel()
+
+
+        setupSearchView()
+        setupRecyclerView()
+
+    }
+
+    private fun fabButtonClick() {
         binding.fabAddTask.setOnClickListener {
             val dialogBinding = NoteAddAlertDialogBinding.inflate(layoutInflater)
 
@@ -92,20 +92,35 @@ class MainFragment : Fragment() {
                 dialogBinding.etNote.text.toString(),
                 layoutInflater,
                 viewModelMain,
-                requireContext()
-                , viewModelDetail
+                requireContext(), viewModelDetail
             )
             Toast.makeText(requireContext(), "Not eklendi", Toast.LENGTH_SHORT).show()
 
 
         }
 
-        observeViewModel()
-        setupRecyclerView()
     }
 
+
+    //Kotlinde birden fazla ayar yapcağın zaman .apply kullanıyorsun.
     private fun setupRecyclerView() {
-        adapter = NoteAdapter(emptyList(), viewModelMain, requireContext())
+        adapter = NoteAdapter(mutableListOf(), viewModelMain, requireContext(), onItemClick = {
+
+
+            val bundle = Bundle().apply {
+                putInt("id", it.id)
+                putString("title", it.title)
+                putString("noteText", it.noteText)
+            }
+
+            findNavController().navigate(
+                R.id.action_mainFragment_to_detailFragment,
+                bundle
+            )
+
+
+        })
+
         binding.rvTasks.apply {
             layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = this@MainFragment.adapter
@@ -113,14 +128,47 @@ class MainFragment : Fragment() {
         }
     }
 
+
+    // observe() = Bu veriyi izle, değişirse bana haber ver.
+    // Güncellenen data ile UI'yı güncelle viewLifecycleOwner-> this gibi bir şey
     private fun observeViewModel() {
         viewModelMain.noteList.observe(viewLifecycleOwner) { notes ->
-            adapter = NoteAdapter(notes, viewModelMain, requireContext())
+            noteList = ArrayList(notes)
+            if (noteList.isEmpty()) {
+                binding.rvTasks.visibility = View.GONE
+                binding.tvEmptyState.visibility = View.VISIBLE
+                binding.lottieEmptyState.visibility = View.VISIBLE
+
+            } else {
+                binding.rvTasks.visibility = View.VISIBLE
+                binding.tvEmptyState.visibility = View.GONE
+                binding.lottieEmptyState.visibility = View.GONE
+            }
+
+            adapter = NoteAdapter(mutableListOf(), viewModelMain, requireContext(), onItemClick = {
+
+
+                val bundle = Bundle().apply {
+                    putInt("id", it.id)
+                    putString("title", it.title)
+                    putString("noteText", it.noteText)
+                }
+
+                findNavController().navigate(
+                    R.id.action_mainFragment_to_detailFragment,
+                    bundle
+                )
+
+
+            })
+
             binding.rvTasks.adapter = adapter
-            adapter.notifyDataSetChanged()
+            adapter.updateData(notes)
         }
     }
 
+
+    //Bu aşamada, binding referansını null yaparak bellek sızıntısını önler
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -132,6 +180,17 @@ class MainFragment : Fragment() {
         viewModelMain.loadNotes()
     }
 
+    private fun setupSearchView() {
+        binding.etSearch.addTextChangedListener(object : android.text.TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                viewModelMain.searchNotes(s?.toString() ?: "")
+            }
+
+            override fun afterTextChanged(s: android.text.Editable?) {}
+        })
+    }
 
 }
 

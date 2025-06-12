@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/darkBlue"
     android:background="@color/darkBlue"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="@color/darkBlue"
     tools:context=".ui.fragment.MainFragment">
 
 
@@ -17,6 +17,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:hint="Not ara"
+        android:textColorHint="@color/black"
         app:boxBackgroundColor="@color/white"
         app:boxBackgroundMode="filled"
         app:boxCornerRadiusBottomEnd="16dp"
@@ -25,6 +26,7 @@
         app:boxCornerRadiusTopStart="16dp"
         app:boxStrokeColor="@color/black"
         app:endIconMode="clear_text"
+        app:hintTextColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle"
@@ -39,11 +41,6 @@
             android:inputType="text"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
-    <!-- Başlık -->
-
-    <!-- RecyclerView - Görev Listesi -->
-
-    <!-- Boş Durum Mesajı -->
 
     <TextView
         android:id="@+id/tvTitle"
@@ -69,7 +66,7 @@
         android:layout_height="0dp"
         android:clipToPadding="false"
         android:paddingTop="16dp"
-        android:paddingBottom="80dp"
+        android:paddingBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -82,14 +79,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Henüz görev yok. Ekle, üret, yönet!"
-        android:textSize="16sp"
         android:textColor="#999999"
-        android:visibility="gone"
+        android:textSize="16sp"
         android:textStyle="italic"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.548"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintVertical_bias="0.653" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieEmptyState"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginBottom="20dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.552"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.442"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="empty.json"
+        app:lottie_loop="true" />
 
     <!-- Yeni Görev Ekle Butonu -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton

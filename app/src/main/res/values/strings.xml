@@ -2,7 +2,7 @@
     <string name="app_name">Togemi</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    
+
     <!-- File picker strings -->
     <string name="choose_file_type">Bir dosya türü seçin</string>
     <string name="select_image">Resim Seç</string>

@@ -37,6 +37,9 @@
             app:exitAnim="@anim/slide_out_right"
             app:popEnterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_detailFragment_to_favoriteNotesFragment"
+            app:destination="@id/favoriteNotesFragment" />
     </fragment>
     <fragment
         android:id="@+id/toDoFragment"
@@ -50,5 +53,14 @@
             app:exitAnim="@anim/fragment_fade_exit"
             app:popEnterAnim="@anim/fragment_fade_enter"
             app:popExitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteNotesFragment"
+        android:name="com.mahmutgunduz.togemi.ui.fragment.FavoriteNotesFragment"
+        android:label="fragment_favorite_notes"
+        tools:layout="@layout/fragment_favorite_notes" >
+        <action
+            android:id="@+id/action_favoriteNotesFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
 </navigation>

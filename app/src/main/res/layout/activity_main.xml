@@ -33,7 +33,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <com.mahmutgunduz.togemi.utils.AnimatedBottomNavigationView
+        <com.mahmutgunduz.togemi.service.AnimatedBottomNavigationView
             android:id="@+id/bottomNavigationView"
             style="@style/CustomBottomNavigationView"
             android:layout_width="match_parent"

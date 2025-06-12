@@ -13,7 +13,7 @@ import com.mahmutgunduz.togemi.database.NoteDao
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
-import javax.inject.Inject
+
 
 
 class MainViewModel(
@@ -64,21 +64,41 @@ class MainViewModel(
         )
     }
 
-    fun intentToDetail(note: NoteData, view: android.view.View) {
-        val bundle = Bundle()
-        bundle.putSerializable("note", note)
-        bundle.putInt("id", note.id)
-        bundle.putString("title", note.title)
-        bundle.putString("noteText", note.noteText)
-        Navigation.findNavController(view)
-            .navigate(R.id.action_mainFragment_to_detailFragment, bundle)
 
-
-    }
 
 
     override fun onCleared() {
         super.onCleared()
         compositeDisposable.clear()
     }
+
+
+    fun setPassword(noteId: String, password: String) {
+        compositeDisposable.add(
+            noteDao.setPassword(noteId.toInt(), password)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    loadNotes()
+                }, { error ->
+                    error.printStackTrace()
+                })
+        )
+    }
+
+
+    fun searchNotes(query: String){
+
+        compositeDisposable.add(
+            noteDao.searchNotes(query)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe { notes ->
+
+                    _noteList.value = notes
+                }
+        )
+    }
+
+
 }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1097123894504",
+    "project_id": "togemi-f58e9",
+    "storage_bucket": "togemi-f58e9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1097123894504:android:dc5d47c6a413f25582e55d",
+        "android_client_info": {
+          "package_name": "com.mahmutgunduz.togemi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVHagR12tvVQncclZb-yBmG9SfIWjsPhg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
