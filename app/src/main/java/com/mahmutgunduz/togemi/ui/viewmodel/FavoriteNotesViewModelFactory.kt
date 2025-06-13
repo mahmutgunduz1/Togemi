@@ -2,7 +2,7 @@ package com.mahmutgunduz.togemi.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.mahmutgunduz.togemi.database.NoteDao
+import com.mahmutgunduz.togemi.data.dao.NoteDao
 
 class FavoriteNotesViewModelFactory(
     private val noteDao: NoteDao

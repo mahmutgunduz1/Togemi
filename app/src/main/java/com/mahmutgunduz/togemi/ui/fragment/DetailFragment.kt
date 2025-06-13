@@ -24,6 +24,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mahmutgunduz.togemi.R
+import com.mahmutgunduz.togemi.data.dao.NoteDao
 import com.mahmutgunduz.togemi.data.entity.NoteData
 import com.mahmutgunduz.togemi.data.entity.FileData
 import com.mahmutgunduz.togemi.databinding.FilepickerBottomSheetBinding
@@ -48,7 +49,7 @@ class DetailFragment : Fragment() {
     private lateinit var noteData: NoteData
 
 
-    private lateinit var noteDao: com.mahmutgunduz.togemi.database.NoteDao
+    private lateinit var noteDao: NoteDao
     private lateinit var detailViewModel: DetailViewModel
     private lateinit var mainViewModel: MainViewModel
 

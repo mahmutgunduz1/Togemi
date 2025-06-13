@@ -3,16 +3,13 @@ package com.mahmutgunduz.togemi.ui.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.mahmutgunduz.togemi.data.entity.FileData
 import com.mahmutgunduz.togemi.data.entity.NoteData
-import com.mahmutgunduz.togemi.database.FileDao
-import com.mahmutgunduz.togemi.database.NoteDao
+import com.mahmutgunduz.togemi.data.dao.FileDao
+import com.mahmutgunduz.togemi.data.dao.NoteDao
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
-import kotlinx.coroutines.launch
 
 
 class DetailViewModel(

@@ -1,14 +1,11 @@
 package com.mahmutgunduz.togemi.ui.viewmodel
 
 
-import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.navigation.Navigation
-import com.mahmutgunduz.togemi.R
 import com.mahmutgunduz.togemi.data.entity.NoteData
-import com.mahmutgunduz.togemi.database.NoteDao
+import com.mahmutgunduz.togemi.data.dao.NoteDao
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable

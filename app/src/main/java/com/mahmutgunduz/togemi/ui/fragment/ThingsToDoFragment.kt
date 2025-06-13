@@ -6,29 +6,42 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.mahmutgunduz.togemi.R
-import com.mahmutgunduz.togemi.ui.viewmodel.CreateTaskViewModel
+import com.mahmutgunduz.togemi.database.NoteDataBase
+import com.mahmutgunduz.togemi.databinding.FragmentMainBinding
+import com.mahmutgunduz.togemi.databinding.FragmentTBinding
+import com.mahmutgunduz.togemi.databinding.FragmentThingsToDoBinding
+import com.mahmutgunduz.togemi.ui.viewmodel.ThingsToDoViewModel
+import com.mahmutgunduz.togemi.ui.viewmodel.ThingsToDoViewModelFactory
 
 
 class ThingsToDoFragment : Fragment() {
 
-
-    private lateinit var viewModel: CreateTaskViewModel
+    private lateinit var viewModel: ThingsToDoViewModel
+    private lateinit var binding: FragmentThingsToDoBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val tempViewModel: CreateTaskViewModel by viewModels()
-        viewModel = tempViewModel
-
+        val dao = NoteDataBase.getInstance(requireContext()).toDo()
+        val factory = ThingsToDoViewModelFactory(dao)
+        viewModel = ViewModelProvider(this, factory)[ThingsToDoViewModel::class.java]
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_things_to_do, container, false)
+        binding = FragmentThingsToDoBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        binding.fabAddTask.setOnClickListener {
+            findNavController().navigate(R.id.action_toDoFragment_to_toDoDetailsFragment)
+        }
+    }
 }

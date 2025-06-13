@@ -1,4 +1,4 @@
-package com.mahmutgunduz.togemi.database
+package com.mahmutgunduz.togemi.data.dao
 
 import androidx.room.Dao
 import androidx.room.Delete

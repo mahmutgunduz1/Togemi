@@ -1,0 +1,35 @@
+[33mcommit ae8e531a4069093c19d3cf622086b071cd270ce2[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m
+Merge: c2c5bb4 adbbdbe
+Author: Mahmut Gündüz <mahmutgundzz@gmail.com>
+Date:   Wed Jun 4 16:21:17 2025 +0300
+
+    Merge branch 'master' of https://github.com/mahmutgunduz1/Togemi
+    
+    # Conflicts:
+    #       app/build.gradle.kts
+    #       app/src/main/java/com/mahmutgunduz/togemi/ui/fragment/DetailFragment.kt
+    #       app/src/main/java/com/mahmutgunduz/togemi/ui/fragment/MainFragment.kt
+    #       app/src/main/java/com/mahmutgunduz/togemi/ui/viewmodel/DetailViewModel.kt
+    #       app/src/main/java/com/mahmutgunduz/togemi/ui/viewmodel/MainViewModel.kt
+    #       app/src/main/java/com/mahmutgunduz/togemi/utils/Extensions.kt
+    #       app/src/main/res/layout/fragment_detail.xml
+    #       app/src/main/res/layout/fragment_things_to_do.xml
+    #       app/src/main/res/navigation/nav_grapth.xml
+
+[33mcommit c2c5bb471de4e2d7602af9e692dae8bc365d9d4d[m
+Author: Mahmut Gündüz <mahmutgundzz@gmail.com>
+Date:   Tue Jun 3 16:27:10 2025 +0300
+
+    daha fazla özellik eklendi
+
+[33mcommit adbbdbe496c45b44dddc316bcdeea52f3870d620[m[33m ([m[1;31morigin/NextStepBranch[m[33m)[m
+Author: Mahmut Gündüz <mahmutgundzz@gmail.com>
+Date:   Tue Jun 3 16:27:10 2025 +0300
+
+    veri yönetimi düzeltildi DetailFragment.kt  tasarımı  bitti veri ekleme  silme sorunu düzeltildi
+
+[33mcommit 40706f10d3f89c143faaf878e198ee98a76430c1[m
+Author: Mahmut Gündüz <mahmutgundzz@gmail.com>
+Date:   Tue May 20 18:52:51 2025 +0300
+
+    first Commit

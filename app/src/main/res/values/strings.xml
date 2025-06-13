@@ -13,4 +13,23 @@
     <string name="video_icon">Video ikonu</string>
     <string name="audio_icon">Ses ikonu</string>
     <string name="document_icon">Dosya ikonu</string>
+
+    <!-- Task Detail Fragment Strings -->
+    <string name="add_task">Görev Ekle</string>
+    <string name="task_title_hint">Görev Başlığı</string>
+    <string name="description_hint">Görev Açıklaması</string>
+    <string name="due_date_time">Bitiş Tarihi ve Saati</string>
+    <string name="select_date">Tarih Seç</string>
+    <string name="select_time">Saat Seç</string>
+    <string name="priority">Öncelik</string>
+    <string name="priority_low">Düşük</string>
+    <string name="priority_medium">Orta</string>
+    <string name="priority_high">Yüksek</string>
+    <string name="set_reminder">Hatırlatıcı Ayarla</string>
+    <string name="tags">Etiketler</string>
+    <string name="add_tag">Etiket Ekle</string>
+    <string name="attachments">Ekler</string>
+    <string name="add_attachment">Dosya Ekle</string>
+    <string name="mark_as_favorite">Favorilere Ekle</string>
+    <string name="save_task">Görevi Kaydet</string>
 </resources>

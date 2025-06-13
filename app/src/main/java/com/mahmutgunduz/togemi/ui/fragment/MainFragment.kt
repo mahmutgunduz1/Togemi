@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.room.Room
 import com.mahmutgunduz.togemi.R
+import com.mahmutgunduz.togemi.data.dao.NoteDao
 import com.mahmutgunduz.togemi.data.entity.NoteData
 import com.mahmutgunduz.togemi.database.NoteDataBase
 import com.mahmutgunduz.togemi.databinding.FragmentMainBinding
@@ -29,7 +30,7 @@ class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private lateinit var adapter: NoteAdapter
     private lateinit var noteDataBase: NoteDataBase
-    private lateinit var noteDao: com.mahmutgunduz.togemi.database.NoteDao
+    private lateinit var noteDao: NoteDao
     private lateinit var noteList: ArrayList<NoteData>
     private lateinit var viewModelMain: MainViewModel
     private lateinit var viewModelDetail: DetailViewModel

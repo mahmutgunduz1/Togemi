@@ -2,8 +2,8 @@ package com.mahmutgunduz.togemi.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.mahmutgunduz.togemi.database.FileDao
-import com.mahmutgunduz.togemi.database.NoteDao
+import com.mahmutgunduz.togemi.data.dao.FileDao
+import com.mahmutgunduz.togemi.data.dao.NoteDao
 
 class DetailViewModelFactory(
     private val noteDao: NoteDao,
